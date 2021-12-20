@@ -1,0 +1,14 @@
+.loading-page {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(32, 32, 32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.loading-page span {
+    /* margin: 0 auto; */
+}
+

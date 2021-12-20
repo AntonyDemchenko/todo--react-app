@@ -1,0 +1,31 @@
+.todos {
+    width: 100%;
+    min-height: 80vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.37);
+    position: relative;
+}
+
+.create-item {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: none;
+}
+
+.create-item__img {
+    width: 100%;
+    height: 100%;
+}
+
+.create-item__img:active {
+    transform: scale(95%);
+}
+
+
+

@@ -1,0 +1,50 @@
+.modal-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.344);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.modal-screen.active{
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.3s;
+}
+
+.popup {
+    position: absolute;
+    width: 30%;
+    height: 100px;
+    top: 30%;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px 0;
+    background-color: #fff;
+}
+
+.popup__btns {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup__btn {
+    background-color: rgb(251, 255, 28);
+    border-radius: 5px;
+    width: 40%;
+    height: 25px;
+}

@@ -1,0 +1,34 @@
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid black; */
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.37);
+    z-index: 1;
+}
+
+.header__btns {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__btn {
+    background-color: rgb(251, 255, 28);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    /* border: none; */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
