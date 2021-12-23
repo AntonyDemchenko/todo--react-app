@@ -1,11 +1,11 @@
 import './Header.css'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Header(props) {
     let data = props.data.nav;
     // console.log(data);
 
-    const button = data.map(item => <Link to={item.link} className='header__btn' key={item.text}>{item.text}</Link>);
+    const button = data.map(item => <NavLink to={item.link} className='header__btn' key={item.text}>{item.text}</NavLink>);
 
     return (
         <div className="header">

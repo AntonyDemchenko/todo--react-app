@@ -26,7 +26,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000)
+    }, 1000)
   }, []);
 
   return (
@@ -40,8 +40,9 @@ function App() {
         <div className='container'>
           <Header data={headerData} />
 
+
           <Routes>
-            <Route path="/" element={<Todos />} ></Route>
+            <Route path="/" exact element={<Todos />} ></Route>
             <Route path="/done" element={<Done />} ></Route>
             <Route path="/notes" element={<Notes />} ></Route>
           </Routes>
