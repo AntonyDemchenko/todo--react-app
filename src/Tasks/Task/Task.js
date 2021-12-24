@@ -1,30 +1,41 @@
-import { useState } from 'react';
-import './Task.css'
+import { useState, useContext } from 'react';
+import './Task.css';
+import Context from '../../Context/Context';
 
 
 
 function Task({ id, title, completed }) {
 
-    // console.log(id)
+    const { toggleTodo, removeTodo } = useContext(Context);
 
-    const [checked, setChecked] = useState(completed);
+    // const [checked, setChecked] = useState(completed);
 
 
     const cls = ['task-item__content'];
 
-    if (checked) {
+    // if (checked) {
+    //     cls.push('completed')
+    // }
+
+    if (completed) {
         cls.push('completed')
     }
 
     return (
         <li className='tasks-item'>
-            <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
+
+            <input type="checkbox"
+                className='tasks-item__checkbox'
+                checked={completed}
+                // onChange={() => setChecked(!checked)}
+                onChange={() => toggleTodo(id)} />
+
             <div className={cls.join(' ')}>
                 <strong >{title}</strong>
                 <span>{new Date().toLocaleDateString()}</span>
             </div>
-
-            <button className="tasks-delete">&times;</button>
+            <button className="tasks-add" >&Xi;</button>
+            <button className="tasks-delete" onClick={() => removeTodo(id)}>&times;</button>
         </li >
     )
 };

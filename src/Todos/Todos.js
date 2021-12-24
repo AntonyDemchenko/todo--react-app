@@ -2,10 +2,13 @@ import './Todos.css';
 import Modal from '../Modal/Modal';
 import Tasks from '../Tasks/Tasks';
 import img from '../plus.png';
+import Context from '../Context/Context';
+
 
 import React, { useState, useEffect, useMemo } from 'react';
 
-function Todos({ loading }) {
+function Todos() {
+
     // changing mode of modal window
     const [modalActive, setModalActive] = useState(false);
 
@@ -15,29 +18,18 @@ function Todos({ loading }) {
     // state of the title of a task
     const [todoTitle, setTodoTitle] = useState('');
 
-    // function a() {
-    //     localStorage.setItem('a', 111);
-    // }
-
-    // a()
-    // console.log('aaaaaaaaaaaaaaaaaaaaa')
-
     useEffect(() => {
         // console.log(todos)
         const raw = JSON.parse(localStorage.getItem('todos'));
         setTodos(raw);
         console.log(raw);
-    }, [loading == true]);
-
-
+    }, []);
 
     // setting data of task at the local storage
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
         // console.log('LS')
     }, [todos]);
-
-
 
     // creating new task item
     const addTodo = event => {
@@ -56,24 +48,41 @@ function Todos({ loading }) {
         }
     }
 
+    const removeTodo = id => {
+        setTodos(todos.filter(item => {
+            return item.id !== id
+        }))
+    }
+
+    const toggleTodo = id => {
+        setTodos(todos.map(item => {
+            if (item.id === id) {
+                item.completed = !item.completed
+            }
+            return item
+        }))
+    }
+
     return (
-        <div className="todos">
+        <Context.Provider value={{ toggleTodo, removeTodo }}>
+            <div className="todos">
 
-            <Tasks todos={todos} />
+                <Tasks todos={todos} />
 
+                <button onClick={() => { setModalActive(true); }} className='create-item'>
+                    <img src={img} alt="" className='create-item__img' />
+                </button>
 
-            <button onClick={() => { setModalActive(true); }} className='create-item'>
-                <img src={img} alt="" className='create-item__img' />
-            </button>
-
-            <Modal active={modalActive}
-                setActive={setModalActive}
-                setTodoTitle={setTodoTitle}
-                todoTitle={todoTitle}
-                addTodo={addTodo}
-            />
-        </div>
+                <Modal active={modalActive}
+                    setActive={setModalActive}
+                    setTodoTitle={setTodoTitle}
+                    todoTitle={todoTitle}
+                    addTodo={addTodo}
+                />
+            </div>
+        </Context.Provider>
     )
+
 };
 
 export default Todos; 
