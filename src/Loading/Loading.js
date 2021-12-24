@@ -1,9 +1,15 @@
 import './Loading.css'
 import PropagateLoader from "react-spinners/PropagateLoader";
 
-function Loading() {
+function Loading({ loading }) {
+    const cls = ['loading-page'];
+
+    if (loading) {
+        cls.push('active')
+    }
+
     return (
-        <div className="loading-page">
+        <div className={cls.join(' ')}>
             <PropagateLoader
                 color={"#F8E71C"}
                 // loading={true}

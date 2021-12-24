@@ -12,12 +12,13 @@ function Modal({ active, setActive, setTodoTitle, todoTitle, addTodo }) {
                     placeholder='Type your text'
                     value={todoTitle}
                     onChange={event => setTodoTitle(event.target.value)}
+                    autoFocus
                 // onKeyPress={addTodo}
                 />
 
                 <div className="popup__btns">
-                    <button className="popup__btn" onClick={() => setActive(false)}>cancel</button>
-                    <button className="popup__btn" onClick={() => { setActive(false); addTodo() }}>create</button>
+                    <button className="popup__btn" onClick={() => { setActive(false); setTodoTitle('') }}>cancel</button>
+                    <button className="popup__btn" onClick={(e) => { e.stopPropagation(); setActive(false); addTodo() }}>create</button>
                 </div>
             </div>
 

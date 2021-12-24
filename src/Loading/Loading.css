@@ -2,10 +2,20 @@
     width: 100%;
     height: 100%;
     background-color: rgb(32, 32, 32);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     padding-right: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.loading-page.active {
+    display: flex;
 }
 
 .loading-page span {

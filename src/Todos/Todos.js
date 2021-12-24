@@ -3,34 +3,57 @@ import Modal from '../Modal/Modal';
 import Tasks from '../Tasks/Tasks';
 import img from '../plus.png';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
-function Todos() {
-
-
+function Todos({ loading }) {
+    // changing mode of modal window
     const [modalActive, setModalActive] = useState(false);
 
-    const [todos, setTodos] = useState([
-        { id: 1, title: "hello", completed: false },
-        { id: 2, title: "helllllll no", completed: false },
-        { id: 3, title: "helllllll no000", completed: false },
-    ]);
+    // creating data for tasks rendering
+    const [todos, setTodos] = useState([]);
 
+    // state of the title of a task
     const [todoTitle, setTodoTitle] = useState('');
 
-    const addTodo = event => {
-        // if (event.key === 'Enter') {
-        setTodos([
-            ...todos,
-            {
-                id: Date.now(),
-                title: todoTitle,
-                completed: false,
-            },
+    // function a() {
+    //     localStorage.setItem('a', 111);
+    // }
 
-        ])
-        setTodoTitle('');
-        // }
+    // a()
+    // console.log('aaaaaaaaaaaaaaaaaaaaa')
+
+    useEffect(() => {
+        // console.log(todos)
+        const raw = JSON.parse(localStorage.getItem('todos'));
+        setTodos(raw);
+        console.log(raw);
+    }, [loading == true]);
+
+
+
+    // setting data of task at the local storage
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+        // console.log('LS')
+    }, [todos]);
+
+
+
+    // creating new task item
+    const addTodo = event => {
+        if (todoTitle !== '') {
+            setTodos([
+                ...todos,
+                {
+                    id: Date.now(),
+                    title: todoTitle,
+                    completed: false,
+                },
+
+            ]);
+
+            setTodoTitle('');
+        }
     }
 
     return (

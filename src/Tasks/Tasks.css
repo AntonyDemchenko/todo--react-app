@@ -15,22 +15,3 @@
     flex-direction: column;
     padding: 0 30px;
 }
-
-.tasks-item {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-    background-color: #fff;
-}
-
-.tasks-delete {
-    width: 40px;
-    background-color: rgb(226, 108, 108);
-}
-
-.tasks-item.completed {
-    text-decoration: line-through;
-    color: grey;
-}
-
